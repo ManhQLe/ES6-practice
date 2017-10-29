@@ -1,0 +1,1 @@
+# Tinker with ES6 Syntax
