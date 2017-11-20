@@ -1,0 +1,35 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+<script>
+
+function *Gen1(){
+    var x = 0;
+    for(var i = 0;i<10;i++)
+    {
+        x = x +1;               
+        yield;
+    }
+    return x;
+}
+var gen = Gen1();
+
+fetch("https://www.google.com")
+.then(function(res){
+    return res.text();    
+})
+.then(function(text){
+    console.log(text)
+    console.log("From fetch", gen.next().value);
+    console.log("From fetch", gen.next().value);
+})
+
+setTimeout(function(){
+    for(var i =0;i<3;i++)
+        console.log("From thread 1", gen.next().value);
+},500);
+setTimeout(function(){
+    for(var i =0;i<6;i++)
+    console.log("From thread 2", gen.next().value);
+},0);
+
+
+</script>

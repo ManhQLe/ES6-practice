@@ -14,5 +14,6 @@ console.log(games.size)
 console.log(games.has("Three"))
 console.log(games.values())
 
-games.clear();
-console.log(games)
+console.log("For loop")
+for(const x of games)
+    console.log(x)
